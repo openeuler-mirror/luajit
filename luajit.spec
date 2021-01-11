@@ -2,11 +2,12 @@
 
 Name:           luajit
 Version:        2.1.0
-Release:        0.9beta3
+Release:        1
 Summary:        Just-In-Time Compiler for Lua
 License:        MIT
 URL:            http://luajit.org/
 Source0:        http://luajit.org/download/LuaJIT-2.1.0-beta3.tar.gz
+Patch0:         CVE-2020-15890.patch
 
 ExclusiveArch:  %{arm} %{ix86} x86_64 %{mips} aarch64
 
@@ -71,5 +72,8 @@ ln -s luajit-2.1.0-beta3 %{buildroot}%{_bindir}/luajit
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Mon Jan 11 2021 zhangatao <zhangtao221@huawei.com> - 2.1.0-1
+- fix CVE-2020-15890
+
 * Sun Mar 15 2020 zhangatao <zhangtao221@huawei.com> - 2.1.0-0.8beta3
 - package init
