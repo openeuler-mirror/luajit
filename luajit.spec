@@ -2,7 +2,7 @@
 
 Name:           luajit
 Version:        2.1.0
-Release:        2
+Release:        3
 Summary:        Just-In-Time Compiler for Lua
 License:        MIT
 URL:            http://luajit.org/
@@ -38,6 +38,8 @@ Man pages and other related documents for luajit.
 sed -i -e '/install -m/s/-m/-p -m/' Makefile
 
 %build
+sed -i 's/TARGET_XCFLAGS+= -fno-stack-protector/#&/' src/Makefile
+
 %make_build amalg Q= E=@: PREFIX=%{_prefix} TARGET_STRIP=: \
            CFLAGS="%{optflags}" LDFLAGS="%{__global_ldflags}" \
            MULTILIB=%{_lib}
@@ -74,6 +76,9 @@ ln -s luajit-2.1.0-beta3 %{buildroot}%{_bindir}/luajit
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Mar 19 2021 caodongxia <caodongxia@huawei.com> - 2.1.0-3
+- Remove -fno-stack-protector
+
 * Mon Feb 8 2021 zhanghua <zhanghua40@huawei.com> - 2.1.0-2
 - fix CVE-2020-24372
 
