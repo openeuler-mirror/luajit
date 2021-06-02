@@ -1,0 +1,21 @@
+diff -Nur LuaJIT-2.1.0-beta3/src/Makefile LuaJIT-2.1.0-beta3-new/src/Makefile
+--- LuaJIT-2.1.0-beta3/src/Makefile	2017-05-02 03:05:00.000000000 +0800
++++ LuaJIT-2.1.0-beta3-new/src/Makefile	2021-05-25 17:24:07.075839335 +0800
+@@ -217,7 +217,7 @@
+ TARGET_DYLIBNAME= libluajit-$(ABIVER).$(MAJVER).dylib
+ TARGET_DYLIBPATH= $(TARGET_LIBPATH)/$(TARGET_DYLIBNAME)
+ TARGET_DLLNAME= lua$(NODOTABIVER).dll
+-TARGET_XSHLDFLAGS= -shared -fPIC -Wl,-soname,$(TARGET_SONAME)
++TARGET_XSHLDFLAGS= -shared -fstack-protector-strong -fPIC -Wl,-soname,$(TARGET_SONAME)
+ TARGET_DYNXLDOPTS=
+ 
+ TARGET_LFSFLAGS= -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+@@ -309,7 +309,7 @@
+   TARGET_DYNXLDOPTS=
+ else
+ ifeq (,$(shell $(TARGET_CC) -o /dev/null -c -x c /dev/null -fno-stack-protector 2>/dev/null || echo 1))
+-  TARGET_XCFLAGS+= -fno-stack-protector
++  TARGET_XCFLAGS+=
+ endif
+ ifeq (Darwin,$(TARGET_SYS))
+   ifeq (,$(MACOSX_DEPLOYMENT_TARGET))
