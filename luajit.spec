@@ -2,7 +2,7 @@
 
 Name:           luajit
 Version:        2.1.0
-Release:        3
+Release:        4
 Summary:        Just-In-Time Compiler for Lua
 License:        MIT
 URL:            http://luajit.org/
@@ -10,6 +10,7 @@ Source0:        http://luajit.org/download/LuaJIT-2.1.0-beta3.tar.gz
 Patch0:         CVE-2020-15890.patch
 Patch1:         CVE-2020-24372-1.patch
 Patch2:         CVE-2020-24372-2.patch
+Patch3:         0001-luajit-add-secure-compile-option-fstack.patch
 
 ExclusiveArch:  %{arm} %{ix86} x86_64 %{mips} aarch64
 
@@ -75,6 +76,9 @@ ln -s luajit-2.1.0-beta3 %{buildroot}%{_bindir}/luajit
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sat Aug 20 2022 wangkai <wangkai385@h-partners.com> - 2.1.0-4
+- add secure compile option -fstack-protector-strong
+
 * Wed Jun 30 2021 liuyumeng <liuyumeng5@huawei.com> - 2.1.0-3
 - add BuildRequires: gcc
 
