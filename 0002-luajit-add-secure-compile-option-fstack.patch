@@ -1,18 +1,18 @@
-diff -Nur LuaJIT-2.1.0-beta3/src/Makefile LuaJIT-2.1.0-beta3-new/src/Makefile
---- LuaJIT-2.1.0-beta3/src/Makefile	2017-05-02 03:05:00.000000000 +0800
-+++ LuaJIT-2.1.0-beta3-new/src/Makefile	2021-05-25 17:24:07.075839335 +0800
-@@ -217,7 +217,7 @@
- TARGET_DYLIBNAME= libluajit-$(ABIVER).$(MAJVER).dylib
+diff -Nur LuaJIT-2.1.0-beta3/src/Makefile LuaJIT-2.1.0-beta3_bak/src/Makefile
+--- LuaJIT-2.1.0-beta3/src/Makefile	2023-03-24 16:37:56.684754051 +0800
++++ LuaJIT-2.1.0-beta3_bak/src/Makefile	2023-03-24 16:43:09.421826030 +0800
+@@ -220,7 +220,7 @@
  TARGET_DYLIBPATH= $(TARGET_LIBPATH)/$(TARGET_DYLIBNAME)
  TARGET_DLLNAME= lua$(NODOTABIVER).dll
+ TARGET_DLLDOTANAME= libluajit-$(ABIVER).dll.a
 -TARGET_XSHLDFLAGS= -shared -fPIC -Wl,-soname,$(TARGET_SONAME)
 +TARGET_XSHLDFLAGS= -shared -fstack-protector-strong -fPIC -Wl,-soname,$(TARGET_SONAME)
  TARGET_DYNXLDOPTS=
  
  TARGET_LFSFLAGS= -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
-@@ -309,7 +309,7 @@
-   TARGET_DYNXLDOPTS=
+@@ -313,7 +313,7 @@
  else
+   TARGET_AR+= 2>/dev/null
  ifeq (,$(shell $(TARGET_CC) -o /dev/null -c -x c /dev/null -fno-stack-protector 2>/dev/null || echo 1))
 -  TARGET_XCFLAGS+= -fno-stack-protector
 +  TARGET_XCFLAGS+=
