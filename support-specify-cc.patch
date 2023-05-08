@@ -1,0 +1,12 @@
+diff -up  a/src/Makefile  b/src/Makefile
+---  a/src/Makefile	2023-05-08 15:50:50.384621311 +0800
++++  b/src/Makefile	2023-05-08 15:50:55.270194623 +0800
+@@ -27,7 +27,7 @@ NODOTABIVER= 51
+ DEFAULT_CC = gcc
+ #
+ # LuaJIT builds as a native 32 or 64 bit binary by default.
+-CC= $(DEFAULT_CC)
++CC?= $(DEFAULT_CC)
+ #
+ # Use this if you want to force a 32 bit build on a 64 bit multilib OS.
+ #CC= $(DEFAULT_CC) -m32
